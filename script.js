@@ -2,6 +2,7 @@
 // Set variables
     var timeLeft = 60;
     var timeClock = document.querySelector("#timer");
+    var score = 0;
 
 // Function startQuiz 
     document.querySelector("#startBtn").addEventListener('click',startQuiz);
@@ -11,10 +12,11 @@ function startQuiz() {
     var timerInterval = setInterval(function() {
         timeLeft--;
         timeClock.textContent = timeLeft + " seconds left for quiz.";
-        startQuestions();
+        
           
         if(timeLeft === 0) {
         clearInterval(timerInterval);
+        startQuestions();
         }
 
     }, 1000);
