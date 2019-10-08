@@ -2,8 +2,9 @@
 // Set variables
     var timeLeft = 60;
     var timeClock = document.querySelector("#timer");
-    var correct = 0;
-    var incorrect = 0;
+    var score = 0;
+    var questionIndex = 0;
+    var lastQuestionIndex = questionArr - 1;
 
 // Function startQuiz 
     document.querySelector("#startBtn").addEventListener('click',startQuiz);
@@ -13,9 +14,8 @@ function startQuiz() {
     var timerInterval = setInterval(function() {
         timeLeft--;
         timeClock.textContent = timeLeft + " seconds left for quiz.";
-        // startQuestions()
+        renderQuestions();
         
-          
         if(timeLeft === 0) {
         clearInterval(timerInterval);
         }
@@ -28,42 +28,48 @@ var questionArr = [
    
     {
     question: "The condition in an if / else statement is enclosed within ____.",
-    answerOne: "quotes",
-    answerTwo: "curly brackets",
-    answerThree: "parentheses"
-    }  
-    ];
+    choiceA : "quotes",
+    choiceB : "curly brackets",
+    choiceC : "parentheses",
+    answer : "A"
+    },  
+    {
+    question: "Question 2",
+    choiceA : "quotes",
+    choiceB : "curly brackets",
+    choiceC : "parentheses",
+    answer : "A"
+    } 
+];
     
-    function buttonFunction(){
-        for(var i = 0; i < questionArr.length; i += 1){
-    
-        function getQuestion(){
-            var questionInner = document.getElementById("question");
-            return questionInner.innerHTML = questionArr[i].question;
-        }
-        getQuestion();
-    
-        function getAnswerOne(){
-            var answerOneInner = document.getElementById("answerOne");
-            return answerOneInner.innerHTML = questionArr[i].answerOne;
-        }
-        getAnswerOne();
-    
-    
-        function getAnswerTwo(){
-            var answerTwoInner = document.getElementById("answerTwo");
-            return answerTwoInner.innerHTML = questionArr[i].answerTwo;
-        }
-        getAnswerTwo();
-    
-        function getAnswerThree(){
-            var answerThreeInner = document.getElementById("answerThree");
-            return answerThreeInner.innerHTML = questionArr[i].answerThree;
-        }
-        getAnswerThree();
-      }
+    function renderQuestions(){
+        var q = questionArr[0];
 
-    }
+        for (q<0; q> questionArr.length; q++);
+        question.innerHTML = q.question;
+        choiceA.innerHTML = q.choiceA;
+        choiceB.innerHTML = q.choiceB;
+        choiceC.innerHTML = q.choiceC;
+
+    };
+
+    function checkAnswer(){
+        if (question.correct === answer) {
+            score++;
+            prompt("Answer is correct!");
+        } else {
+            timeLeft--;
+            prompt("Answer is incorrect");
+        }
+            if (questionIndex < lastQuestionIndex){
+                questionIndex++;
+                renderQuestions();
+            } else {
+                clearInterval(timerInterval);
+                scoreSheet();
+            }         
+    };
+
 
 
 // // Quiz questions pop up
