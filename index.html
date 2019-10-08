@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Code Quiz</title>
-    <link rel="stylesheet" type="text/css" href="./questions.js">
     <link rel="stylesheet" type="text/css" href="./style.css">
-    
+  
 </head>
 <body>
     <!-- Header -->
-    <header>
-         <!-- Link to High Score -->
+    <header class="header">
         <!-- Time Countdown --> 
-        <h1 id= "timer"></h1>
+        <p id= "timer" class="header-h1"></p>
+         <!-- Link to High Score -->
+         <p id="highScore" class="header-h2">High Scores</p>
 
     </header>
        
@@ -22,10 +22,37 @@
     <!-- Start Button -->
 
     <button id="startBtn">Start</button>
-    <h2></h2>
     
 
     <!-- Quiz Layout -->
+    
+   <div id="quizField">
+
+    <div id="question"></div>
+
+    <button type="button" id="answerOne"></button>
+
+    <button type="button" id="answerTwo"></button>
+
+    <button type="button" id="answerThree"></button>
+
+    <br>
+
+    <button type="button" onclick="buttonFunction()">Next 
+     question</button>
+
+ </div> 
+    
+    
+    
+    
+    
+    <!-- <h1 id="quiz">
+
+
+        
+    </h1> -->
+
 
 
     

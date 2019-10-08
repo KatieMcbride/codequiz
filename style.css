@@ -1,0 +1,63 @@
+.header{
+    background-color: whitesmoke;
+    padding: 10px;
+}
+
+.header-h1{
+    font-size: 20px;
+    text-align: right;
+
+}
+
+.header-h2{
+    font-size: 20px;
+    text-align: left;
+    
+}
+
+body{
+    width: 100%;
+    margin: auto;
+    font-family: serif;
+    font-family: 'Varela Round', sans-serif;
+    }
+    
+    #quizField{
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    }
+    
+    #question{
+    font-size: 24px;
+    font-weight: 900;
+    margin: 20px;
+    }
+    
+    #answerOne{
+    font-size: 16px;
+    font-weight: 500;
+    }
+    
+    #answerTwo{
+    font-size: 16px;
+    font-weight: 500;
+    }
+    
+    #answerThree{
+    font-size: 16px;
+    font-weight: 500;
+    }
+    
+    button{
+    padding: 8px 15px;
+    color: white;
+    background-color: forestgreen;
+    border-radius: 5px;
+    border: 0px;
+    margin: 10px;
+    }
+    
+    button:hover{
+       background-color: limegreen;
+    }
