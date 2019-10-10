@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Code Quiz</title>
-    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="stylesheet" href="./style.css">
   
 </head>
 <body>
@@ -21,28 +21,34 @@
 
     <!-- Start Button -->
 
-    <button id="startBtn">Start</button>
+    <button id="startBtn" class="start-button">Start</button>
     
 
     <!-- Quiz Layout -->
     
-<div id="quizField">
+<div id= "quizBox" class="box">
 
-    <div id="question">Hello</div>
+    <div id="question" class="question-prompt">Hello</div>
 
     <div>
-        <button id="choiceA" type="button" ></button>
+        <button id="choiceA" type="button" onclick= "checkAnswer1()" class="button" ></button>
     </div> 
 
     <div>
-        <button id="choiceB" type="button" ></button>
+        <button id="choiceB" type="button" onclick= "checkAnswer1()" class="button"></button>
     </div> 
 
-    <div></div>
-        <button id="choiceC" type="button" ></button>
+    <div>
+        <button id="choiceC" type="button" onclick= "checkAnswer1()" class="button"></button>
     </div>
 
- </div> 
+    <!-- In future. Hide this to start. Move Location and color -->
+    <div>
+        <button id="nextButton" type="button" class="Next-button">Next</button>
+    </div>
+
+
+</div> 
 
 
 

@@ -2,49 +2,16 @@
 // Set variables
 var timeLeft = 5;
 var timeClock = document.querySelector("#timer");
-var score = 0;
+var score = 1;
 var questionIndex = 0;
 var lastQuestionIndex = questionArr - 1;
 var questions = document.getElementById("question");
 var i = 0;
-var choiceAEl = document.getElementById("#choiceA");
-var questionArr = [
-    {
-    question: "The condition in an if / else statement is enclosed within ____.",
-    choiceA : "quotes",
-    choiceB : "curly brackets",
-    choiceC : "parentheses",
-    answer : "A"
-    },  
-    {
-    question: "What does CSS stand for?",
-    choiceA : "California Style Sheet",
-    choiceB : "Cryptic Standing Sheet",
-    choiceC : "Cascading Style Sheet",
-    answer : "C"
-    }, 
-    {
-    question: "What event occurs when a user clicks on an HTML element?",
-    choiceA : "onclick",
-    choiceB : "ondown",
-    choiceC : "onmouse",
-    answer : "A"
-    },
-    {
-    question: "How do you write 'Hello' in an alert?",
-    choiceA : "alertBox('Hello')",
-    choiceB : "alert('Hello')",
-    choiceC : "msg('Hello')",
-    answer : "B"
-    }, 
-    {
-    question: "Javascript is the same as Java?",
-    choiceA : "true",
-    choiceB : "false",
-    choiceC : "I don't know",
-    answer : "B"
-    }
-];
+var choiceAEl = document.getElementById("choiceA");
+var choiceBEl = document.getElementById("choiceB");
+var quizBox = document.getElementById("quizBox");
+var leaders = [];
+
 
 // Call to action 'Start Quiz' by click of button
 document.querySelector("#startBtn").addEventListener('click',startQuiz);
@@ -71,33 +38,33 @@ function renderQuestions(){
     choiceC.innerHTML = questionArr[i].choiceC;
 };
 
-document.getElementById("choiceA").addEventListener("click", function(){
-    renderQuestions();
-    i++;
-    // wrap around a click event of choice. User clicks
-});
-document.getElementById("choiceB").addEventListener("click", function(){
-    renderQuestions();
-    i++;
-    // wrap around a click event of choice. User clicks
-});
-document.getElementById("choiceC").addEventListener("click", function(){
+document.getElementById("nextButton").addEventListener("click", function(){
     renderQuestions();
     i++;
     // wrap around a click event of choice. User clicks
 });
 
+// document.getElementById("choiceB").addEventListener("click", function(){
+//     renderQuestions();
+//     i++;
+//     // wrap around a click event of choice. User clicks
+// });
+// document.getElementById("choiceC").addEventListener("click", function(){
+//     renderQuestions();
+//     i++;
+//     // wrap around a click event of choice. User clicks
+// });
 
-// function checkAnswer(){
-//     if (question.correct === answer) {
+
+// function checkAnswer1(){
+    
+//     if (onclick === choiceAEl); {
+//         alert("you got it right!");
 //         score++;
-//         prompt("Answer is correct!");
-//         console.log(score);
 //     } else {
-//         timeLeft--;
-//         prompt("Answer is incorrect");
-//     }     
-// };
+//         alert("wrong");
+//     }
+    
 
 
 
@@ -111,14 +78,52 @@ document.getElementById("choiceC").addEventListener("click", function(){
 
     // Add 15 seconds of time
 
-    //If timer runs out OR questions finished time stops
-
-    //Call to action quizStop
-
-    // Prompt to put in initials
-
     // Calculate score
 
+    //If timer runs out OR questions finished time stops
+
+    //Call to action quizStop or Submit button to showResults
+
+    // Prompt to put in initials when submit button
+    // todoForm.addEventListener("submit", function(event) {
+    //     event.preventDefault();
+      
+    //     var todoText = todoInput.value.trim();
+      
+    //     // Return from function early if submitted todoText is blank
+    //     if (todoText === "") {
+    //       return;
+    //     }
+      
+    //     // Add new todoText to todos array, clear the input
+    //     todos.push(todoText);
+    //     todoInput.value = "";
+      
+    //     // Store updated todos in localStorage, re-render the list
+    //     storeTodos();
+    //     renderTodos();
+    //   });
+
+    
+
+    //leaderboard
+
+    function leaderBoard() {
+        quizBox.textContent = "";
+        
+        for (var i = 0; i < leaders.length; i++) {
+            var leaderName = leaders[i];
+        
+            var li = document.createElement("li");
+            li.textContent = leaderName;
+            quizBox.appendChild(li);
+        }
+    }
+
     // Put score into leaderboard 'localstorage'
+    function storeLeaders() {
+        // Stringify and set "todos" key in localStorage to todos array
+        localStorage.setItem("leaders", JSON.stringify(leaders));
+      }
 
 
