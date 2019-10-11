@@ -1,8 +1,8 @@
 
 // Set variables
-var timeLeft = 5;
+var timeLeft = 60;
 var timeClock = document.querySelector("#timer");
-var score = 1;
+var score = 0;
 var questionIndex = 0;
 var lastQuestionIndex = questionArr.length - 1;
 var questions = document.getElementById("question");
@@ -58,36 +58,25 @@ document.getElementById("nextButton").addEventListener("click", function(){
 
 
 function checkAnswer(answer){
-    
     if (answer === questionArr[i].correct) {
         console.log(++score);
     } if (answer !== questionArr[i].correct){
-    
-    }
-    // if (questionIndex < lastQuestionIndex){
-    // currentQuestion++;
-    // renderQuestions();
-    // }  else {
-    //     console.log(score);
-
+        // decrease 15 seconds of time
+        timeLeft -=15;
+    } if (questionIndex < lastQuestionIndex){
+       
+    }  else {
+        console.log("working");
 }
 
 
   
-    
-    
-
 
 
 
 // Highscore Link
       
 
-    // Answering right or wrong
-
-
-
-    // Add 15 seconds of time
 
     // Calculate score
 
@@ -119,22 +108,26 @@ function checkAnswer(answer){
 
     //leaderboard
 
-    function leaderBoard() {
-        quizBox.textContent = "";
+    // function leaderBoard() {
+    //     quizBox.textContent = "";
         
-        for (var i = 0; i < leaders.length; i++) {
-            var leaderName = leaders[i];
+    //     for (var i = 0; i < leaders.length; i++) {
+    //         var leaderName = leaders[i];
         
-            var li = document.createElement("li");
-            li.textContent = leaderName;
-            quizBox.appendChild(li);
-        }
-    }
+    //         var li = document.createElement("li");
+    //         li.textContent = leaderName;
+    //         quizBox.appendChild(li);
+    //     }
+    // }
 
-    // Put score into leaderboard 'localstorage'
-    function storeLeaders() {
-        // Stringify and set "todos" key in localStorage to todos array
-        localStorage.setItem("leaders", JSON.stringify(leaders));
-      }
+    // // Put score into leaderboard 'localstorage'
+    //     function storeLeaders(event) {
+    //         event.preventDefault();
+    //         var user = {
 
+    //         }
+    //     // Stringify and set "todos" key in localStorage to todos array
+    //     localStorage.setItem("leaders", JSON.stringify(leaders));
+    //   };
 
+};
