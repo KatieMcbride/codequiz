@@ -1,6 +1,6 @@
 
 // Set variables
-var timeLeft = 60;
+var timeLeft = 5;
 var timeClock = document.querySelector("#timer");
 var score = 0;
 var questionIndex = 0;
@@ -10,9 +10,15 @@ var i = 0;
 var choiceAEl = document.getElementById("choiceA");
 var choiceBEl = document.getElementById("choiceB");
 var quizBox = document.getElementById("quizBox");
+var leaderScore = document.getElementById("leaderScore");
 var leaders = [];
+var leaderList = document.getElementById("leader-list");
 
+init();
 
+function init(){
+    leaderScore.style.display = "none";
+}
 
 // Call to action 'Start Quiz' by click of button
 document.querySelector("#startBtn").addEventListener('click',startQuiz);
@@ -26,6 +32,7 @@ function startQuiz() {
        
         if(timeLeft === 0) {
         clearInterval(timerInterval);
+        leaderBoard();
         }
 
     }, 1000);
@@ -40,8 +47,14 @@ function renderQuestions(){
 };
 
 document.getElementById("nextButton").addEventListener("click", function(){
-    renderQuestions();
-    i++;
+    // if (questionIndex > lastQuestionIndex){
+    //     leaderBoard();
+    //  }  else {
+        renderQuestions();
+        i++;
+     
+   
+   
     // wrap around a click event of choice. User clicks
 });
 
@@ -63,11 +76,43 @@ function checkAnswer(answer){
     } if (answer !== questionArr[i].correct){
         // decrease 15 seconds of time
         timeLeft -=15;
-    } if (questionIndex < lastQuestionIndex){
-       
-    }  else {
-        console.log("working");
+    } 
 }
+
+function leaderBoard(){
+    quizBox.style.display = "none";
+    leaderScore.style.display = "block";
+
+    for (var i = 0; i < leaders.length; i++) {
+        var leaderName = leaders[i];
+    
+        var li = document.createElement("li");
+        li.textContent = leaderName;
+        leaderScore.appendChild(li);
+    }
+
+}
+
+function renderTodos() {
+    // Clear todoList element and update todoCountSpan
+    todoList.innerHTML = "";
+    todoCountSpan.textContent = todos.length;
+  
+    // Render a new li for each todo
+    for (var i = 0; i < todos.length; i++) {
+      var todo = todos[i];
+  
+      var li = document.createElement("li");
+      li.textContent = todo;
+      todoList.appendChild(li);
+    }
+  }
+
+// function leaderBoard() {
+    
+    
+    
+// }
 
 
   
@@ -106,19 +151,7 @@ function checkAnswer(answer){
 
     
 
-    //leaderboard
 
-    // function leaderBoard() {
-    //     quizBox.textContent = "";
-        
-    //     for (var i = 0; i < leaders.length; i++) {
-    //         var leaderName = leaders[i];
-        
-    //         var li = document.createElement("li");
-    //         li.textContent = leaderName;
-    //         quizBox.appendChild(li);
-    //     }
-    // }
 
     // // Put score into leaderboard 'localstorage'
     //     function storeLeaders(event) {
@@ -130,4 +163,4 @@ function checkAnswer(answer){
     //     localStorage.setItem("leaders", JSON.stringify(leaders));
     //   };
 
-};
+// };
