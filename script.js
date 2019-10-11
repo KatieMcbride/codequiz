@@ -4,13 +4,14 @@ var timeLeft = 5;
 var timeClock = document.querySelector("#timer");
 var score = 1;
 var questionIndex = 0;
-var lastQuestionIndex = questionArr - 1;
+var lastQuestionIndex = questionArr.length - 1;
 var questions = document.getElementById("question");
 var i = 0;
 var choiceAEl = document.getElementById("choiceA");
 var choiceBEl = document.getElementById("choiceB");
 var quizBox = document.getElementById("quizBox");
 var leaders = [];
+
 
 
 // Call to action 'Start Quiz' by click of button
@@ -56,14 +57,24 @@ document.getElementById("nextButton").addEventListener("click", function(){
 // });
 
 
-// function checkAnswer1(){
+function checkAnswer(answer){
     
-//     if (onclick === choiceAEl); {
-//         alert("you got it right!");
-//         score++;
-//     } else {
-//         alert("wrong");
-//     }
+    if (answer === questionArr[i].correct) {
+        console.log(++score);
+    } if (answer !== questionArr[i].correct){
+    
+    }
+    // if (questionIndex < lastQuestionIndex){
+    // currentQuestion++;
+    // renderQuestions();
+    // }  else {
+    //     console.log(score);
+
+}
+
+
+  
+    
     
 
 
