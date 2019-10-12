@@ -66,3 +66,14 @@ var questionArr = [
   //   }
   //   getAnswerThree();
   // }
+
+//   document.getElementById("choiceB").addEventListener("click", function(){
+//     renderQuestions();
+//     i++;
+//     // wrap around a click event of choice. User clicks
+// });
+// document.getElementById("choiceC").addEventListener("click", function(){
+//     renderQuestions();
+//     i++;
+//     // wrap around a click event of choice. User clicks
+// });
