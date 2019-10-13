@@ -1,4 +1,4 @@
-// Store quiz questions here. Example below
+// Store quiz questions:
 
 var questionArr = [
     {
@@ -38,61 +38,3 @@ var questionArr = [
     }
 ];
 
-
-  // for(var i = 0; i < questionArr.length; i =+ 1){
-    
-  //   function getQuestion(){
-  //       var questionInner = document.getElementById("question");
-  //       return questionInner.innerHTML = questionArr[i].question;
-  //   }
-  //   getQuestion();
-
-  //   function getAnswerOne(){
-  //       var answerOneInner = document.getElementById("answerOne");
-  //       return answerOneInner.innerHTML = questionArr[i].answerOne;
-  //   }
-  //   getAnswerOne();
-
-
-  //   function getAnswerTwo(){
-  //       var answerTwoInner = document.getElementById("answerTwo");
-  //       return answerTwoInner.innerHTML = questionArr[i].answerTwo;
-  //   }
-  //   getAnswerTwo();
-
-  //   function getAnswerThree(){
-  //       var answerThreeInner = document.getElementById("answerThree");
-  //       return answerThreeInner.innerHTML = questionArr[i].answerThree;
-  //   }
-  //   getAnswerThree();
-  // }
-
-//   document.getElementById("choiceB").addEventListener("click", function(){
-//     renderQuestions();
-//     i++;
-//     // wrap around a click event of choice. User clicks
-// });
-// document.getElementById("choiceC").addEventListener("click", function(){
-//     renderQuestions();
-//     i++;
-//     // wrap around a click event of choice. User clicks
-// });
-
-
- // for (var i = 0; i < leaders.length; i++) {
-    //     var leader = leaders[i];
-    
-    //     var li = document.createElement("li");
-    //     li.textContent = leader;
-    //     li.setAttribute("data-index", i);
-    
-    //     leaderList.appendChild(li);
-
-
-     // for (var i = 0; i < leaders.length; i++) {
-        //     var leaderName = leaders[i];
-    
-        //     var li = document.createElement("li");
-        //     li.textContent = leaderName;
-        //     leaderList.appendChild(li);
-        // }

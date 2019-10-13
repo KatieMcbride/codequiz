@@ -4,7 +4,6 @@ var timeLeft = 60;
 var timerInterval = 0;
 var timeClock = document.querySelector("#timer");
 var yourScore = document.getElementById("yourScore");
-// var questionIndex = 0;
 var lastQuestionIndex = questionArr.length - 1;
 var questions = document.getElementById("question");
 var i = 0;
@@ -27,14 +26,15 @@ init();
 function init(){
     leaderScore.style.display = "none";
     quizBox.style.display = "none";
-    //  Get stored leaders from localStorage
     //     Parsing the JSON string to an object
     var lastUser = JSON.parse(localStorage.getItem("leaderHighScore"));
-    // If todos were retrieved from localStorage, update the todos array to it
+    // If todos were retrieved from localStorage, update the array 
     if (lastUser !== null) {
       leaders = lastUser;
     }
-   }
+}
+
+
 
 // Call to action 'Start Quiz' by click of button
 document.querySelector("#startBtn").addEventListener('click',startQuiz);
@@ -56,6 +56,7 @@ function startQuiz() {
     }, 1000);
 
 }
+
     
 function renderQuestions(){
     questions.innerHTML = questionArr[i].question;
@@ -63,6 +64,7 @@ function renderQuestions(){
     choiceB.innerHTML = questionArr[i].choiceB;
     choiceC.innerHTML = questionArr[i].choiceC;
 };
+
 
 document.getElementById("nextButton").addEventListener("click", function(){
      //If timer runs out OR questions finished time stops
@@ -72,7 +74,7 @@ document.getElementById("nextButton").addEventListener("click", function(){
      }  else {
         renderQuestions();
         i++;
-}
+    }
 });
 
 
@@ -85,11 +87,11 @@ function checkAnswer(answer){
     } 
 }
 
+
 function leaderBoard(){
     quizBox.style.display = "none";
     leaderScore.style.display = "block";
-
-    }
+}
 
 
 submitButton.addEventListener("click", function(event) {
@@ -103,7 +105,7 @@ submitButton.addEventListener("click", function(event) {
     }
 
     var div = document.createElement("div");
-    div.textContent = "You're score is:" +" " + timeLeft;
+    div.textContent = "Your score is:" +" " + timeLeft;
     leaderList.appendChild(div);
     
     leaderBoard();
@@ -134,7 +136,7 @@ function showScore(){
             var name = leaders[i].names;
             var score = leaders[i].savedScores;
             var div = document.createElement("div");
-            div.textContent = name + " " + score;
+            div.textContent = name + " " +score;
             div.setAttribute("data-index", i);
             leaderList.appendChild(div);
           }
@@ -147,26 +149,3 @@ highScoreLink.addEventListener('click',function(){
     leaderScore.style.display = "block";
 });
 
-
-
-
-
-
-
-// Highscore Link
-      
-
-    //Call to action quizStop or Submit button to showResults
-
-
-
-
-    // // Put score into leaderboard 'localstorage'
-    //     function storeLeaders(event) {
-    //         event.preventDefault();
-    //         var user = {
-
-    //         }
-    //     // Stringify and set "todos" key in localStorage to todos array
-    //     localStorage.setItem("leaders", JSON.stringify(leaders));
-    //   };
