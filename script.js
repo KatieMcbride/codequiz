@@ -3,7 +3,7 @@
 var timeLeft = 60;
 var timerInterval = 0;
 var timeClock = document.querySelector("#timer");
-var score = 0;
+var yourScore = document.getElementById("yourScore");
 // var questionIndex = 0;
 var lastQuestionIndex = questionArr.length - 1;
 var questions = document.getElementById("question");
@@ -16,35 +16,40 @@ var leaders = [];
 var leaderList = document.getElementById("leader-list");
 var submitButton = document.getElementById("submit-button");
 var scoreInput = document.getElementById("score-text");
+var name = document.getElementById("score-name");
+var startButton = document.getElementById("startBtn");
+var welcome = document.getElementById("welcome");
+var highScoreLink = document.getElementById("highScore");
+
 
 init();
 
 function init(){
     leaderScore.style.display = "none";
+    quizBox.style.display = "none";
     //  Get stored leaders from localStorage
     //     Parsing the JSON string to an object
     var lastUser = JSON.parse(localStorage.getItem("leaderHighScore"));
-    console.log(lastUser);
     // If todos were retrieved from localStorage, update the todos array to it
     if (lastUser !== null) {
       leaders = lastUser;
     }
-    console.log(lastUser);
    }
- // }
 
 // Call to action 'Start Quiz' by click of button
 document.querySelector("#startBtn").addEventListener('click',startQuiz);
 
 function startQuiz() {
+    quizBox.style.display = "block";
+    startButton.style.display = "none";
+    welcome.style.display = "none";
     // Timer starts    
     timerInterval = setInterval(function() {
         timeLeft--;
         timeClock.textContent = timeLeft + " seconds left for quiz.";
         renderQuestions();
-       
-        if(timeLeft === 0) {
 
+        if(timeLeft === 0) {
         leaderBoard();
         }
 
@@ -60,7 +65,6 @@ function renderQuestions(){
 };
 
 document.getElementById("nextButton").addEventListener("click", function(){
-    console.log(i);
      //If timer runs out OR questions finished time stops
     if (i > lastQuestionIndex){
         clearInterval(timerInterval);
@@ -72,93 +76,80 @@ document.getElementById("nextButton").addEventListener("click", function(){
 });
 
 
-    function checkAnswer(answer){
-        if (answer === questionArr[i].correct) {
-            timeLeft +=10;
-        } if (answer !== questionArr[i].correct){
-            // decrease 15 seconds of time
-            timeLeft -=15;
-        } 
-        // yourscore.textContent = timeLeft;
+function checkAnswer(answer){
+    if (answer === questionArr[i].correct) {
+         timeLeft +=10;
+    } if (answer !== questionArr[i].correct){
+        // decrease 15 seconds of time
+        timeLeft -=15;
+    } 
+}
+
+function leaderBoard(){
+    quizBox.style.display = "none";
+    leaderScore.style.display = "block";
+
     }
 
-    function leaderBoard(){
-        quizBox.style.display = "none";
-        leaderScore.style.display = "block";
 
-        for (var i = 0; i < leaders.length; i++) {
-            var leaderName = leaders[i];
-    
-            var li = document.createElement("li");
-            li.textContent = leaderName;
-            leaderList.appendChild(li);
-        }
-    }
-
-    submitButton.addEventListener("click", function(event) {
-        event.preventDefault();
-        storeScore();
+submitButton.addEventListener("click", function(event) {
+    event.preventDefault();
            
-        // var scoreText = scoreInput.value.trim();
+     var scoreText = scoreInput.value.trim();
   
-        // // Return from function early if submitted scoreText is blank
-        // if (scoreText === "") {
-        // return;
-        // }
-  
-        // // Add new scoreText to leader array, clear the input
-        // leaders.push(scoreText);
-        // scoreInput.value = "";
+    // Return from function early if submitted scoreText is blank
+    if (scoreText === "") {
+    return;
+    }
 
-        
-        storeLeaders();
-        // Re-render the list
+    var div = document.createElement("div");
+    div.textContent = "You're score is:" +" " + timeLeft;
+    leaderList.appendChild(div);
+    
+    leaderBoard();
+    storeScore();    
+    storeLeaders();
+});
 
-        leaderBoard();
-    });
-
-    function storeScore(event) {
-        leaders[leaders.length] = {
-            names: scoreInput.value,
-            savedScores: timeLeft
-        }
-    }        
+function storeScore(event) {
+    leaders[leaders.length] = {
+        names: scoreInput.value,
+        savedScores: timeLeft
+    }
+}        
 
    
-    function showScore(){
-        var lastUser = JSON.parse(localStorage.getItem("leaderHighScore"));
-        // for (var i = 0; i < lastUser.length; i++) {
-        //     console.log("last user" + lastUser[i].savedScores);
-        //     var name = user[i].names;
-        //     var score = user[i].savedScores;
-        //     var div = document.createElement("div");
-        //     div.textContent = name + " " + score;
-        //     div.setAttribute("data-index", i);
-        //     leader-list.appendChild(div);
-        //   }
-         }
-    }
-        
+function storeLeaders() {
+    // Stringify and set "scores" key in localStorage to leader array
+    localStorage.setItem("leaderHighScore", JSON.stringify(leaders));
+}
 
-    function storeLeaders() {
-        // Stringify and set "scores" key in localStorage to leader array
-        localStorage.setItem("leaderHighScore", JSON.stringify(leaders));
+showScore();
 
-      }
+function showScore(){
+    var lastUser = JSON.parse(localStorage.getItem("leaderHighScore"));
 
-    //   leader[leader.length] = {
-    //     names: scoreInput.value,
-    //     savedScores: score
-
-    //     localStorage.setItem("leaderHighScore"), JSON.stringify(timerInterval));
-    // }
-
+    for (var i = 0; i < lastUser.length; i++) {
+        console.log(lastUser[i].savedScores);
+            var name = leaders[i].names;
+            var score = leaders[i].savedScores;
+            var div = document.createElement("div");
+            div.textContent = name + " " + score;
+            div.setAttribute("data-index", i);
+            leaderList.appendChild(div);
+          }
+}
     
-    
+highScoreLink.addEventListener('click',function(){
+    quizBox.style.display = "none";
+    startButton.style.display = "none";
+    welcome.style.display = "none";
+    leaderScore.style.display = "block";
+});
 
 
 
-  
+
 
 
 

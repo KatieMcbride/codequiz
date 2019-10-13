@@ -77,3 +77,22 @@ var questionArr = [
 //     i++;
 //     // wrap around a click event of choice. User clicks
 // });
+
+
+ // for (var i = 0; i < leaders.length; i++) {
+    //     var leader = leaders[i];
+    
+    //     var li = document.createElement("li");
+    //     li.textContent = leader;
+    //     li.setAttribute("data-index", i);
+    
+    //     leaderList.appendChild(li);
+
+
+     // for (var i = 0; i < leaders.length; i++) {
+        //     var leaderName = leaders[i];
+    
+        //     var li = document.createElement("li");
+        //     li.textContent = leaderName;
+        //     leaderList.appendChild(li);
+        // }

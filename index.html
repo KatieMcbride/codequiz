@@ -6,29 +6,40 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Code Quiz</title>
     <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
   
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <!-- Timer --> 
-        <p id= "timer" class="header-h1"></p>
+        
+        <p id="highScore" class="header-h2">High Scores</p>
          <!-- Link to High Score -->
-         <p id="highScore" class="header-h2">High Scores</p>
 
     </header>
        
 
     <!-- Start Button -->
 
+    <div id="welcome" class="welcome box">
+        <p>Welcome to the Javascript Quiz!</p> 
+        <p>Your score will be based on answering the question correctly and how quickly you answer. For every question you answer correctly, you will be awarded 10 seconds. If you answer incorrectly you will lose 15 seconds. Press "start" when you are ready. Good luck!</p>
+    </div>
+
     <button id="startBtn" class="start-button">Start</button>
+
+    <!-- Timer -->
+    <div>
+    <p id= "timer" class="header-h1"></p>
+    </div>
     
 
     <!-- Quiz Layout -->
     
 <div id= "quizBox" class="box">
 
-    <div id="question" class="question-prompt">Hello</div>
+    <div id="question" class="question-prompt"></div>
 
     <div>
         <button id="choiceA" type="button" onclick= "checkAnswer('A')" class="button" ></button>
@@ -52,10 +63,9 @@
  <!-- Leader Board -->
  <div id="leaderScore" class="leaderHighScore">
         <div>
-                <div id ="yourScore"></div>
                 <form id="score-board" method="POST">
-                  <label for="score-text">Write your name:</label>
-                  <input type="text" placeholder="Nickname" name="score-text" id="score-text" />
+                  <label for="score-text"></label>
+                  <input type="text" placeholder="Name here" name="score-name" id="score-text" />
                   <button id="submit-button">Submit</button>
                 </form>
                 <ul id="leader-list"></ul>
@@ -64,15 +74,6 @@
  </div>
 
 
-
-    
-    <!-- Results page -->
-    <div id="results">
-
-
-    </div>
-
-    <!-- High Score Layout -->
 
 
 
